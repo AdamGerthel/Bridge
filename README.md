@@ -22,6 +22,7 @@ $ npm install
 $ bower install
 ```
 **4. Follow instructions in default.config.js (optionally sign up for free remote CouchDB at [Iris Couch](http://www.iriscouch.com/))**
+
 **5. Visit the site in your browser of choice, and use the "+" sign to start your first document.**
 
 ### Known issues
