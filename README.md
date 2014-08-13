@@ -1,7 +1,7 @@
 Bridge
 ======
 
-Bridge is a small web-based markdown application using [PouchDB](http://pouchdb.com/). Data is stored locally in the browser and utilizes live synchronization remotely using CouchDB (optional). The app works both offline and online.
+Bridge is a small web-based markdown application using [PouchDB](http://pouchdb.com/). Data is stored locally in the browser and utilizes live synchronization remotely using CouchDB (optional). The app works both offline and online. Design and functionality heavily inspired by [IA Writer](http://www.iawriter.com/) and Notes.app (default OSX application).
 
 ### Background
 
