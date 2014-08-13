@@ -11,18 +11,18 @@ Bridge has been built as an experiment in order to learn more about offline appl
 
 You'll need a web server in order to run the application. It's been built using Apache, but Node or similar will work just as well.
 
-##### 1. Clone or download repo
+**1. Clone or download repo**
 
-##### 2. Install NPM dependencies: 
+**2. Install NPM dependencies:**
 ```bash
 $ npm install
 ```
-##### 3. Install Bower dependencies
+**3. Install Bower dependencies**
 ```bash
 $ bower install
 ```
-##### 4. Follow instructions in default.config.js
-##### 5. Visit the site in your browser of choice, and use the "+" sign to start your first document.
+**4. Follow instructions in default.config.js (optionally sign up for free remote CouchDB at [Iris Couch](http://www.iriscouch.com/))**
+**5. Visit the site in your browser of choice, and use the "+" sign to start your first document.**
 
 ### Known issues
 
