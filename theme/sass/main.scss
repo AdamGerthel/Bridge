@@ -1,0 +1,170 @@
+// Import settings
+@import "reset", "variables", "animations";
+@import "../../bower_components/bourbon/dist/bourbon";
+@import "../../bower_components/neat/app/assets/stylesheets/neat";
+@import "../fonts/ubuntu-mono.scss";
+
+$blue: #00c6ff;
+$mobile: new-breakpoint(max-width 635px 6);
+
+body {
+  font-size: 1em;
+  font-family: 'Ubuntu Monospace';
+}
+
+#workspace {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#editor {
+  max-width: 800px;
+  margin: 30px 30px 60px 280px;
+
+  @include media($mobile) {
+    margin: 15px 15px 60px;
+  }
+}
+
+.buttons {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2;
+
+  button {
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    font-family: inherit;
+    float: left;
+    display: block;
+    margin: 0;
+    padding: 12px 8px;
+    font-size: 0.8rem;
+    color: #CCC;
+    cursor: pointer;
+
+    &:hover {
+      border-bottom: 1px solid $blue;
+      color: #000;
+    }
+
+    &.keyboard {
+      display: none;
+
+      @include media($mobile) {
+        display: block;
+      }
+    }
+  }
+}
+
+.indicator {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background: #CCC;
+  z-index: 3;
+
+  &.saved {
+    background: #7AFC74;
+  }
+
+  &.error {
+    background: #FC7474;
+  }
+
+  &.working {
+
+    &:before {
+      content: "";
+      display: block;
+      position: relative;
+      left: -15px;
+      top: 5px;
+      height: 2px;
+      width: 10px;
+      background: #CCC;
+      @include transform(translate(-50%, -50%));
+      @include transform-origin(0 0);
+      @include animation-name(rotate);
+      @include animation-duration(1s);
+      @include animation-timing-function(linear);
+      @include animation-iteration-count(infinite);
+    }
+  }
+}
+
+.document-stats {
+  position: fixed;
+  bottom: 18px;
+  right: 60px;
+  z-index: 3;
+  font-size: 0.8rem;
+  color: #CCC;
+}
+
+.document-list {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 250px;
+  background: #F7F7F7;
+  color: #666;
+
+  @include media($mobile) {
+    display: none;
+  }
+
+  h2 {
+    padding: 20px 20px 15px 20px;
+    margin: 0;
+    font-size: 1.2rem;
+    color: #919191;
+    text-transform: uppercase;
+  }
+
+  ul {
+
+    li {
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+
+      &.active {
+        background: #FFF;
+      }
+
+      &.empty {
+        font-style: italic;
+      }
+    }
+  }
+
+  .new {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    border: none;
+    background: none;
+    font-family: inherit;
+    padding: 12px 8px;
+    font-size: 1.2rem;
+    color: #CCC;
+    cursor: pointer;
+  }
+}
+
+.keyboard-enabler {
+  display: none;
+}
+
+@import "editor";

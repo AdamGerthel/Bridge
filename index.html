@@ -1,0 +1,39 @@
+<!doctype html>
+<html ng-app="documentApp">
+  <head>
+    <title>Bridge</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="theme/css/main.css">
+    <script src="bower_components/pouchdb/dist/pouchdb-nightly.min.js"></script>
+    <script src="config.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+  </head>
+  <body ng-controller="documentHandler">
+
+    <div class="buttons">
+      <button class="delete" ng-click="deleteDocument()">Delete</button>
+      <button class="save" ng-click="updateDocument()">Save</button>
+      <button class="keyboard" ng-click="keyboard">Keyboard</button>
+    </div>
+
+    <div id="workspace" ng-click="highLightDoc()"></div>
+    <pre id="editor"></pre>
+
+    <div class="document-list">
+      <h2>Docs</h2>
+      <ul>
+        <li ng-repeat="document in documents | orderBy:'-doc.edited'" ng-click="loadDocument(document.id)" ng-class="{active: document.id==current.doc._id, empty: !document.doc.value}">{{document.doc.value || "Empty document" | limitTo: 20 }}</li>
+      </ul>
+      <button class="new" ng-click="newDocument()">+</button>
+    </div>
+    <div class="indicator" ng-class="{saved: saved, error: error, working: working}"></div>
+    <div class="document-stats" ng-show="current.doc.value">
+      {{wordCount(current.doc.value).readingTime}} min ({{wordCount(current.doc.value).words}} words)
+    </div>
+    <input type="text" class="keyboard-enabler" ng-focus="keyboard"/>
+
+  <script src="bower_components/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script src="app/main.js"></script>
+  </body>
+</html>

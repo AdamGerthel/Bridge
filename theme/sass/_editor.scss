@@ -1,0 +1,41 @@
+#editor {
+  font-family: 'Ubuntu Monospace';
+  font-size: 1rem;
+
+  $regular: #1a1a1a;
+  $strong: #000;
+  $weak: #969494;
+
+  .ace_heading {
+    color: $strong;
+    font-weight: 700;
+  }
+
+  .ace_emphasis {
+    color: $regular;
+    font-style: italic;
+  }
+
+  .ace_strong {
+    color: $strong;
+    font-weight: bold;
+  }
+
+  .ace_1,
+  .ace_2 {
+    color: $weak;
+    font-weight: 400;
+  }
+
+  .ace_list {
+    color: $regular;
+
+    &.ace_markup {
+      color: $weak;
+    }
+  }
+
+  .ace_cursor {
+    color: $blue;
+  }
+}

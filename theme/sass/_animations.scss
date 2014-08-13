@@ -1,0 +1,19 @@
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg) translate(-50%, -50%);
+  }
+
+  to {
+    -webkit-transform: rotate(359deg) translate(-50%, -50%);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg) translate(-50%, -50%);
+  }
+
+  to {
+    transform: rotate(359deg) translate(-50%, -50%);
+  }
+}

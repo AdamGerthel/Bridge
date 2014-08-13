@@ -1,0 +1,259 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg) translate(-50%, -50%); }
+
+  to {
+    -webkit-transform: rotate(359deg) translate(-50%, -50%); } }
+@keyframes rotate {
+  from {
+    transform: rotate(0deg) translate(-50%, -50%); }
+
+  to {
+    transform: rotate(359deg) translate(-50%, -50%); } }
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* Ubuntu Mono @font-face kit */
+/* BEGIN Ubuntu Mono Regular */
+@font-face {
+  font-family: 'Ubuntu Monospace';
+  src: url("../fonts/ubuntumono-regular-webfont.eot");
+  src: url("../fonts/ubuntumono-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/ubuntumono-regular-webfont.woff") format("woff"), url("../fonts/ubuntumono-regular-webfont.ttf") format("truetype"), url("../fonts/ubuntumono-regular-webfont.svg#ubuntu_monoregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+/* END Ubuntu Mono Regular */
+/* BEGIN Ubuntu Mono Italic */
+@font-face {
+  font-family: 'Ubuntu Monospace';
+  src: url("../fonts/ubuntumono-regular-italic-webfont.eot");
+  src: url("../fonts/ubuntumono-regular-italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/ubuntumono-regular-italic-webfont.woff") format("woff"), url("../fonts/ubuntumono-regular-italic-webfont.ttf") format("truetype"), url("../fonts/ubuntumono-regular-italic-webfont.svg#ubuntu_monoitalic") format("svg");
+  font-weight: normal;
+  font-style: italic; }
+/* END Ubuntu Mono Italic */
+/* BEGIN Ubuntu Mono Bold */
+@font-face {
+  font-family: 'Ubuntu Monospace';
+  src: url("../fonts/ubuntumono-b-webfont.eot");
+  src: url("../fonts/ubuntumono-b-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/ubuntumono-b-webfont.woff") format("woff"), url("../fonts/ubuntumono-b-webfont.ttf") format("truetype"), url("../fonts/ubuntumono-b-webfont.svg#ubuntu_monobold") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+/* END Ubuntu Mono Bold */
+/* BEGIN Ubuntu Mono Bold Italic */
+@font-face {
+  font-family: 'Ubuntu Monospace';
+  src: url("../fonts/ubuntumono-bold-italic-webfont.eot");
+  src: url("../fonts/ubuntumono-bold-italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/ubuntumono-bold-italic-webfont.woff") format("woff"), url("../fonts/ubuntumono-bold-italic-webfont.ttf") format("truetype"), url("../fonts/ubuntumono-bold-italic-webfont.svg#ubuntu_monobold_italic") format("svg");
+  font-weight: bold;
+  font-style: italic; }
+/* END Ubuntu Mono Bold Italic */
+body {
+  font-size: 1em;
+  font-family: 'Ubuntu Monospace'; }
+
+#workspace {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0; }
+
+#editor {
+  max-width: 800px;
+  margin: 30px 30px 60px 280px; }
+  @media screen and (max-width: 635px) {
+    #editor {
+      margin: 15px 15px 60px; } }
+
+.buttons {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2; }
+  .buttons button {
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    font-family: inherit;
+    float: left;
+    display: block;
+    margin: 0;
+    padding: 12px 8px;
+    font-size: 0.8rem;
+    color: #CCC;
+    cursor: pointer; }
+    .buttons button:hover {
+      border-bottom: 1px solid #00c6ff;
+      color: #000; }
+    .buttons button.keyboard {
+      display: none; }
+      @media screen and (max-width: 635px) {
+        .buttons button.keyboard {
+          display: block; } }
+
+.indicator {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background: #CCC;
+  z-index: 3; }
+  .indicator.saved {
+    background: #7AFC74; }
+  .indicator.error {
+    background: #FC7474; }
+  .indicator.working:before {
+    content: "";
+    display: block;
+    position: relative;
+    left: -15px;
+    top: 5px;
+    height: 2px;
+    width: 10px;
+    background: #CCC;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-animation-name: rotate;
+    -moz-animation-name: rotate;
+    animation-name: rotate;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite; }
+
+.document-stats {
+  position: fixed;
+  bottom: 18px;
+  right: 60px;
+  z-index: 3;
+  font-size: 0.8rem;
+  color: #CCC; }
+
+.document-list {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 250px;
+  background: #F7F7F7;
+  color: #666; }
+  @media screen and (max-width: 635px) {
+    .document-list {
+      display: none; } }
+  .document-list h2 {
+    padding: 20px 20px 15px 20px;
+    margin: 0;
+    font-size: 1.2rem;
+    color: #919191;
+    text-transform: uppercase; }
+  .document-list ul li {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer; }
+    .document-list ul li.active {
+      background: #FFF; }
+    .document-list ul li.empty {
+      font-style: italic; }
+  .document-list .new {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    border: none;
+    background: none;
+    font-family: inherit;
+    padding: 12px 8px;
+    font-size: 1.2rem;
+    color: #CCC;
+    cursor: pointer; }
+
+.keyboard-enabler {
+  display: none; }
+
+#editor {
+  font-family: 'Ubuntu Monospace';
+  font-size: 1rem; }
+  #editor .ace_heading {
+    color: black;
+    font-weight: 700; }
+  #editor .ace_emphasis {
+    color: #1a1a1a;
+    font-style: italic; }
+  #editor .ace_strong {
+    color: black;
+    font-weight: bold; }
+  #editor .ace_1,
+  #editor .ace_2 {
+    color: #969494;
+    font-weight: 400; }
+  #editor .ace_list {
+    color: #1a1a1a; }
+    #editor .ace_list.ace_markup {
+      color: #969494; }
+  #editor .ace_cursor {
+    color: #00c6ff; }

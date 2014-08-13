@@ -1,0 +1,10 @@
+{
+  "name": "BridgeApp",
+  "version": "0.0.1",
+  "dependencies": {
+    "grunt-cli": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-sass": "latest",
+    "grunt-contrib-watch": "latest"
+  }
+}
