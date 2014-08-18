@@ -25,7 +25,7 @@ $ bower install
 
 **5. Visit the site in your browser of choice, and use the "+" sign to start your first document.**
 
-If you want to use remote sync but don't want to set up CouchDB yourself I'd recommend using a free account over at [Iris Couch](iriscouch.com).
+If you want to use remote sync but don't want to set up CouchDB yourself I'd recommend using a free account over at [Iris Couch](http://iriscouch.com).
 
 ### Known issues
 
