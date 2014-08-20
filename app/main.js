@@ -23,8 +23,6 @@ documentApp.controller('documentHandler', function ($scope) {
 
   // Loads the document and opens it in the editor
   function initialize() {
-    // Display working indicator
-    $scope.working = true;
     $scope.fetchDocs();
   }
 
@@ -46,11 +44,6 @@ documentApp.controller('documentHandler', function ($scope) {
         }
         $scope.loadDocument(mostRecent.id);
       }
-
-      // Update the scope and indicate that we've stopped working
-      $scope.$apply(function(){
-        $scope.working = false;
-      });
     });
   };
 
@@ -60,15 +53,15 @@ documentApp.controller('documentHandler', function ($scope) {
       $scope.current.doc = doc;
       editor.setValue(doc.value, 1);
       editor.focus();
-      // Update the scope and indicate that we've stopped working
-      $scope.$apply(function(){
-        $scope.working = false;
-      });
     });
   };
 
   // Deletes document
   $scope.deleteDocument = function() {
+    if (remoteCouch) {
+      // Display working indicator
+      $scope.working = true;
+    };
     db.get($scope.current.doc._id, function(err, doc) {
       db.remove(doc, function(err, response) {
         if (!err) {
@@ -101,6 +94,10 @@ documentApp.controller('documentHandler', function ($scope) {
 
   // Updates document
   $scope.updateDocument = function() {
+    if (remoteCouch) {
+      // Display working indicator
+      $scope.working = true;
+    };
     db.get($scope.current.doc._id).then(function(doc) {
       return db.put({
         _id: doc._id,
@@ -153,7 +150,13 @@ documentApp.controller('documentHandler', function ($scope) {
       live: true
     };
     db.replicate.to(remoteCouch, options, syncError);
-    db.replicate.from(remoteCouch, options, syncError);
+    db.replicate.from(remoteCouch, options, syncError)
+      .on('uptodate', function () {
+        $scope.$apply(function(){
+          console.log('Local database synced and up to date');
+          $scope.working = false;
+        });
+      });
   }
 
   function syncError() {
