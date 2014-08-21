@@ -166,6 +166,7 @@ documentApp.controller('documentHandler', function ($scope) {
     // Display ERROR indicator
     $scope.$apply(function(){
       $scope.error = true;
+      $scope.working = false;
     });
   }
 
