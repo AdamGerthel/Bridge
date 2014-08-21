@@ -44,6 +44,8 @@ documentApp.controller('documentHandler', function ($scope) {
         }
         $scope.loadDocument(mostRecent.id);
       }
+
+      $scope.$apply(function(){});
     });
   };
 
