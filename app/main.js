@@ -55,6 +55,7 @@ documentApp.controller('documentHandler', function ($scope) {
       $scope.current.doc = doc;
       editor.setValue(doc.value, 1);
       editor.focus();
+      $scope.$apply(function(){});
     });
   };
 
