@@ -30,7 +30,6 @@ If you want to use remote sync but don't want to set up CouchDB yourself I'd rec
 ### Known issues
 
 - The editor in use, ([Ace](http://ace.c9.io/)), doesn't work very well with Mobile Safari.
-- DB changes (on remote) are currently poorly visualized.
 - The document list on the left is sometime not in the correct order (mainly noticed in Chrome)
 
 ### Roadmap (which may or may not happen)
