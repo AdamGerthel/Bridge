@@ -159,6 +159,11 @@ documentApp.controller('documentHandler', function ($scope) {
           console.log('Local database synced and up to date');
           $scope.working = false;
         });
+      })
+      .on('change', function () {
+        $scope.$apply(function(){
+          $scope.working = true;
+        });
       });
   }
 
