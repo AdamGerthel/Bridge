@@ -148,22 +148,36 @@ documentApp.controller('documentHandler', function ($scope) {
   };
 
   // Syncronize to remote server
+  $scope.working = false;
+  var retryTimeout = 1500;
   function sync() {
-    var options = {
-      live: true
-    };
+    // Stop here if we're already syncing.
+    if ($scope.working) {
+      return;
+    }
+    // Indicate that we are syncing.
+    $scope.working = true;
+
+    var options = { live: true };
+
     db.replicate.to(remoteCouch, options, syncError);
     db.replicate.from(remoteCouch, options, syncError)
       .on('uptodate', function () {
         $scope.$apply(function(){
           console.log('Local database synced and up to date');
           $scope.working = false;
+          $scope.offline = false;
+          $scope.error = false;
         });
       })
-      .on('change', function () {
+      .on('error', function () {
         $scope.$apply(function(){
-          $scope.working = true;
+          console.log('An error has occured');
+          $scope.working = false;
+          $scope.offline = true;
         });
+        // Keep retrying replication if we go offline
+        setTimeout(sync, retryTimeout);
       });
   }
 
