@@ -49,12 +49,46 @@ documentApp.controller('documentHandler', function ($scope) {
     });
   };
 
-  // Loads current document into workspace
-  $scope.loadDocument = function(id) {
-    db.get(id, function(err, doc) {
+  $scope.fetchDocHistory = function() {
+    if ($scope.current.history) {
+      $scope.current.history = null;
+      return;
+    }
+    var options = {
+      revs_info: true,
+      revs: true
+    };
+    db.get($scope.current.doc._id, options, function(err, doc) {
+      $scope.$apply(function(){
+        var history = [];
+        for (i = 0; i < doc._revs_info.length; i++) {
+          if(doc._revs_info[i].status == "available") {
+            history.push(doc._revs_info[i]);
+          }
+        }
+        $scope.current.history = history;
+      });
+    });
+  };
+
+  // Loads current document into workspace.
+  // If a revision ID is specified it loads as read-only.
+  //
+  // @param {string} id The ID of the document to load
+  // @param {string} rev The revision ID of the revision to load (optional)
+  $scope.loadDocument = function(id, rev) {
+    var options = {
+      rev: rev
+    };
+    db.get(id, options, function(err, doc) {
       $scope.current.doc = doc;
       editor.setValue(doc.value, 1);
-      editor.focus();
+      if (!rev) {
+        editor.setReadOnly(false);
+        editor.focus();
+      } else if (rev) {
+        editor.setReadOnly(true);
+      }
       $scope.$apply(function(){});
     });
   };
@@ -64,7 +98,7 @@ documentApp.controller('documentHandler', function ($scope) {
     if (remoteCouch) {
       // Display working indicator
       $scope.working = true;
-    };
+    }
     db.get($scope.current.doc._id, function(err, doc) {
       db.remove(doc, function(err, response) {
         if (!err) {
@@ -100,7 +134,7 @@ documentApp.controller('documentHandler', function ($scope) {
     if (remoteCouch) {
       // Display working indicator
       $scope.working = true;
-    };
+    }
     db.get($scope.current.doc._id).then(function(doc) {
       return db.put({
         _id: doc._id,
@@ -144,7 +178,9 @@ documentApp.controller('documentHandler', function ($scope) {
   };
 
   $scope.highLightDoc = function() {
-    editor.focus();
+    if (editor.getReadOnly() === false) {
+      editor.focus();
+    }
   };
 
   // Syncronize to remote server

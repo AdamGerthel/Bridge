@@ -232,6 +232,19 @@ body {
     color: #CCC;
     cursor: pointer; }
 
+.document-history {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 20px;
+  width: 400px;
+  z-index: 4;
+  background: #CCC;
+  overflow: scroll; }
+  .document-history div.row {
+    display: block; }
+
 .keyboard-enabler {
   display: none; }
 

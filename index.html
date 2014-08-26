@@ -12,6 +12,7 @@
   <body ng-controller="documentHandler">
 
     <div class="buttons">
+      <button class="history" ng-click="fetchDocHistory()">History</button>
       <button class="delete" ng-click="deleteDocument()">Delete</button>
       <button class="save" ng-click="updateDocument()">Save</button>
       <button class="keyboard" ng-click="keyboard">Keyboard</button>
@@ -32,6 +33,10 @@
       {{wordCount(current.doc.value).readingTime}} min ({{wordCount(current.doc.value).words}} words)
     </div>
     <input type="text" class="keyboard-enabler" ng-focus="keyboard"/>
+
+    <div class="document-history" ng-show="current.history">
+      <div class="row" ng-repeat="revision in current.history">{{revision.rev}} <button ng-click="loadDocument(current.doc._id, revision.rev)">Load</button></div>
+    </div>
 
   <script src="bower_components/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
   <script src="app/main.js"></script>
